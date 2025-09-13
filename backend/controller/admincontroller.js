@@ -85,3 +85,24 @@ export const getallBookings = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
+export const deleteTiket = async (req , res)=>{
+    try {
+
+        const TiketId = req.params.id;
+
+        if(!TiketId) {
+            return res.status(400).json({ message: 'Tiket ID is required' });
+        }
+
+        const deletedTiket = await Tiket.findByIdAndDelete(TiketId);
+
+        if(!deletedTiket){
+            return res.status(404).json({ message: 'Tiket not found' });
+        }
+        res.status(200).json(deletedTiket);
+        
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
