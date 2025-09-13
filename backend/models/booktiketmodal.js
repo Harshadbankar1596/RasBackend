@@ -56,6 +56,6 @@ const BookTicketsSchema = new mongoose.Schema({
             message: "Price must be a positive number"
         }
     },
-});
+},{timestamps : true});
 
 export default mongoose.model("BookTicket", BookTicketsSchema);
