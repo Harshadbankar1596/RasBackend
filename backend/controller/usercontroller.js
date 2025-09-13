@@ -105,8 +105,9 @@ export const BookTicket = async (req, res) => {
     
     res.status(201).json({
       success: true,
-      message: "Order created successfully",
-      order
+      id : order.id,
+      amount : order.amount,
+      currency : order.currency,
     });
 
   } catch (error) {
