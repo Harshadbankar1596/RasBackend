@@ -8,9 +8,9 @@ import Booktikets from '../models/booktiketmodal.js';
 export const addTiket = async (req, res) => {
     try {
         console.log(req.body);
-        const {TiketName, TiketDesc, TiketPrice} = req.body;
+        const { TiketName, TiketDesc, TiketPrice } = req.body;
 
-        if(!TiketName ||!TiketDesc ||!TiketPrice) {
+        if (!TiketName || !TiketDesc || !TiketPrice) {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
@@ -31,7 +31,7 @@ export const addTiket = async (req, res) => {
 export const getTikets = async (req, res) => {
     try {
         const tikets = await Tiket.find();
-        if(!tikets) {
+        if (!tikets) {
             return res.status(404).json({ message: 'No tikets found' });
         }
         res.status(200).json(tikets);
@@ -45,8 +45,8 @@ export const getTikets = async (req, res) => {
 export const updateTiket = async (req, res) => {
     try {
 
-        const {TiketId , TiketName, TiketDesc, TiketPrice } = req.body;
-        if(!TiketId ||!TiketName ||!TiketDesc ||!TiketPrice) {
+        const { TiketId, TiketName, TiketDesc, TiketPrice } = req.body;
+        if (!TiketId || !TiketName || !TiketDesc || !TiketPrice) {
             return res.status(400).json({ message: 'All fields are required' });
         }
         const updatedTiket = await Tiket.findByIdAndUpdate(
@@ -59,7 +59,7 @@ export const updateTiket = async (req, res) => {
             { new: true }
         );
 
-        if(!updatedTiket) {
+        if (!updatedTiket) {
             return res.status(404).json({ message: 'Tiket not found' });
         }
 
@@ -70,17 +70,17 @@ export const updateTiket = async (req, res) => {
     }
 }
 
-export const getallBookings = async (req , res)=>{
+export const getallBookings = async (req, res) => {
     try {
 
         const bookings = await Booktikets.find();
 
-        if(!bookings) {
+        if (!bookings) {
             return res.status(404).json({ message: 'No bookings found' });
         }
 
         res.status(200).json(bookings);
-        
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
