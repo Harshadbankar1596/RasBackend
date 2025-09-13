@@ -54,3 +54,14 @@ export const BookTicket = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
+
+export const createorder = async (req, res) => {
+    try {
+
+        const {TotalPrice, BookedTickets} = req.body
+        
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
