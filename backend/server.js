@@ -3,6 +3,7 @@ import connectDB from "./DB/db.js";
 import adminRouter from "./routes/admin.js"
 import cors from "cors";
 import dotenv from "dotenv";
+import BookTicket from "./routes/userrouts.js"
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "*" || process.env.VITE_API_URL, credentials: true }));
 
 app.use("/admin", adminRouter)
+app.use("/user", BookTicket)
+
 
 connectDB().then((v) => {
     if(v){
