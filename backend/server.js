@@ -10,19 +10,19 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin:process.env.VITE_API_URL, credentials: true }));
+app.use(cors({ origin: "http://localhost:5173/" || process.env.VITE_API_URL, credentials: true }));
 
 app.use("/admin", adminRouter)
 app.use("/user", BookTicket)
 
 
 connectDB().then((v) => {
-    if(v){
+    if (v) {
         app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`);
         })
     }
-    else{
+    else {
         console.log("Error In MongoDB")
     }
 })
