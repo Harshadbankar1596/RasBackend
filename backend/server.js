@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "*" || process.env.VITE_API_URL, credentials: true }));
+app.use(cors({ origin:process.env.VITE_API_URL, credentials: true }));
 
 app.use("/admin", adminRouter)
 app.use("/user", BookTicket)
